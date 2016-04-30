@@ -28,6 +28,8 @@ run `npm run serve:build` to review the build.
 ##important files
 
  - build-src.json
+ - vendor-js-src.json
+ - vendor-css-src.json
  
  add new files here for build process
  
