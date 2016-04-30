@@ -25,16 +25,12 @@ run `npm run serve:build` to review the build.
 
 <hr>
 
-##important files
+## important files
 
+ add new files here for build process and to inject them into index.html at `npm start`
  - build-src.json
  - vendor-js-src.json
  - vendor-css-src.json
- 
- add new files here for build process
- 
  - replace-map.dev.json
- 
- add new files herer to inject them into index.html at `npm start`
- 
  - replace-map.dist.json
+ 
