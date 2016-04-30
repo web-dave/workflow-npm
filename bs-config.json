@@ -1,0 +1,13 @@
+{
+	"injectChanges": false,
+	"files": [
+         "./**/*.{html,js,json,css}"
+    ],
+	"watchOptions": { "ignored": "node_modules" },
+	"server": {
+		"baseDir": "./"
+	},
+    "startPath": "app/index.html",
+    "browser": "chrome"
+
+}

@@ -1,0 +1,6 @@
+{
+    "<!--vendor style-->": "<link rel=\"stylesheet\" href=\"./app/vendor/vendor.min.css\">",
+    "<!--custom style-->": "<link rel=\"stylesheet\" href=\"./app/styles/main.css\">",
+    "<!--vendor scripts-->": "<script src=\"./app/vendor/vendor.min.js\"></script>",
+    "<!--custom scripts-->": "<script src=\"./app/app.js\"></script>"
+}

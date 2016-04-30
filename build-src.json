@@ -1,0 +1,6 @@
+[
+    "./app/app/app.js",
+    "./app/app/configs/routes.js",
+    "./app/app/configs/restendpoints.js",
+    "./app/app/configs/run.js"
+]
