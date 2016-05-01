@@ -7,30 +7,33 @@ required :
 
 Run `npm i` to install
 
-## development
+## tasks
+`npm start`
+start workflow:
+<ol>
+<li>run prestart:
+<ol>
+ <li>run wiresrc</li>
+ <li>run wiredep</li>
+ </ol></li>
+<li>run lite</li>
+<li>run watch:scss</li>
+</ol>
 
-Run `npm start` for preview.
+## scripts
+You can run every script from bash `$npm run {scriptName}`
 
-## Testing
+`lite`
+start lite-server, a little browsersync based server by John Papa
 
-Running `npm test` will run the unit tests with karma.
+`wiresrc`
+inject your source into index.html
 
-## build
+`wiredep`
+inject bower source into index.html
 
-Run `npm run build` to build resources. After that the resources are available at 
-`./src/main/resources/static/`.
+`watch:scss`
+start scss workflow (run node-sass in watchmode: watch and compile on change)
 
-## review
-run `npm run serve:build` to review the build.
 
-<hr>
 
-## important files
-
- add new files here for build process and to inject them into index.html at `npm start`
- - build-src.json
- - vendor-js-src.json
- - vendor-css-src.json
- - replace-map.dev.json
- - replace-map.dist.json
- 
