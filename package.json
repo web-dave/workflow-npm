@@ -3,8 +3,8 @@
     "version": "1.0.1",
     "private": true,
     "devDependencies": {
-        "@songkick/replaceinfiles": "^1.1.4",
         "bower": "^1.7.9",
+        "bower-build": "0.0.1",
         "clean-css": "3.4.10",
         "concat-from-list": "^0.1.2",
         "concurrently": "^2.0.0",
@@ -22,9 +22,9 @@
         "node-sass": "^3.4.2",
         "phantomjs-html": "^0.1.2",
         "phantomjs-prebuilt": "^2.1.7",
-        "postbuild": "^1.0.3",
         "rimraf": "2.5.2",
         "uglify-js": "^2.6.2",
+        "wire-src": "^1.0.0",
         "wiredep": "^4.0.0",
         "wiredep-cli": "^0.1.0"
     },
@@ -37,8 +37,9 @@
     "scripts": {
         "lite": "lite-server",
         "wiredep": "wiredep -d ./bower_components -s ./app/index.html --dependencies true",
-        "postbuild": "postbuild -i ./app/index.tpl.html  -o ./app/index.html -c ./app/app -j ./app/app",
-        "prestart": "npm run postbuild && npm run wiredep",
+        "wiresrc": "wiresrc -i ./app/index.tpl.html  -o ./app/index.html -c app/app/styles -j app/app",
+        "prestart": "npm run wiresrc && npm run wiredep",
+        "bb": "bower-build -o app -p vendor --debug",
         "watch:scss": "node-sass -w --include-path app/scss app/scss/main.scss   app/app/styles/main.css",
         "start": "concurrent \"npm run watch:scss -s\" \"npm run lite\" "
     }
