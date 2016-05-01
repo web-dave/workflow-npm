@@ -1,4 +1,4 @@
-# workflow npm based at the moment windows only.
+# workflow npm.
 
 ## Install
 required :
