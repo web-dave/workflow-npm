@@ -1,71 +1,45 @@
 {
-  "name": "workflow",
-  "version": "1.0.1",
-  "private": true,
-  "dependencies":{
-      "angular": "^1.5.5",
-      "angular-router": "^1.5.5",
-      "angular-material": "^1.0.8",
-      "toastr": "^2.1.2",
-      "angular-loading-bar": "^0.9.0",
-      "moment": "^2.13.0"
-  },
-  "devDependencies": {
-    "@songkick/replaceinfiles": "^1.1.4",
-    "clean-css": "3.4.10",
-    "concat-from-list": "^0.1.2",
-    "istanbul": "^0.4.2",
-    "jasmine-core": "~2.3.4",
-    "karma": "~0.13.15",
-    "karma-chrome-launcher": "^0.2.2",
-    "karma-jasmine": "~0.3.6",
-    "karma-jasmine-html-reporter": "^0.2.0",
-    "karma-phantomjs-launcher": "^1.0.0",
-    "karma-phantomjs2-launcher": "^0.3.2",
-    "lite-server": "^2.0.2",
-    "ng-annotate": "^1.2.1",
-    "node-sass": "^3.4.2",
-    "phantomjs-html": "^0.1.2",
-    "phantomjs-prebuilt": "^2.1.7",
-    "uglify-js": "^2.6.2",
-    "rimraf": "2.5.2",
-    "hashmark": "^3.1.0",
-    "concurrently": "^2.0.0"
-  },
-  "config": {
-    "dist": "dist/*"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "karma start --singleRun",
-    "watch:test": "karma start",
-    "fonts": "xcopy \"./app/fonts\" \"./app/app/styles/fonts\" /s",
-    "watch:scss": "node-sass -w --include-path app/scss app/scss/main.scss   app/app/styles/main.css",
-    "scss": "node-sass --include-path app/scss app/scss/main.scss   app/app/styles/main.css",
-    "lite": "lite-server",
-    "lite:build": "lite-server -c bs-build-config.json",
-    "prestart": "npm run clean:vendor -s & npm run vendor:js & npm run vendor:css & npm run fonts & npm run scss & npm run inject:devjs",
-    "start": "concurrent \"npm run watch:scss -s\" \"npm run lite\" ",
-    "clean:vendor": "rmdir /s /q \"./app/app/vendor\" & rmdir /s /q \"./app/app/styles\" & mkdir \"./app/app/vendor\" & mkdir \"./app/app/styles/fonts\"",
-    "vendor:css": "concat-from-list ./vendor-css-src.json | cleancss  --source-map --output ./app/app/vendor/vendor.min.css",
-    "vendor:js": "concat-from-list ./vendor-js-src.json | uglifyjs -o ./app/app/vendor/vendor.min.js --source-map ./app/app/vendor/vendor.min.js.map -m",
-    "inject:devjs": "replaceinfiles -r replace-map.dev.json -s ./app/index.tpl.html -d ./app/index.html",
-    "inject:buildjs": "replaceinfiles -r replace-map.dist.json -s ./app/index.tpl.html -d ./src/main/resources/static/index.html",
-    "prebuild": "npm run clean:dist -s",
-    "clean:dist": "rmdir /s /q \"./src/main/resources/static\" & mkdir \"./src/main/resources/static\" & mkdir \"./src/main/resources/static/app\" & mkdir \"./src/main/resources/static/app/vendor\" & mkdir \"./src/main/resources/static/app/styles\" ",
-    "build": "npm run build:vendorcss -s && npm run build:vendorjs -s && npm run inject:buildjs -s && npm run build:scss & npm run build:js && npm run build:fonts && npm run build:html && npm run build:json && npm run build:lang",
-    "build:vendorjs": "concat-from-list ./vendor-js-src.json | uglifyjs -o ./src/main/resources/static/app/vendor/vendor.min.js --source-map ./src/main/resources/static/app/vendor/vendor.min.js.map -m",
-    "build:vendorcss": "concat-from-list ./vendor-css-src.json | cleancss  --source-map --output ./src/main/resources/static/app/vendor/vendor.min.css",
-    "build:scss": "node-sass --include-path app/scss app/scss/main.scss | cleancss  --source-map --output ./src/main/resources/static/app/styles/main.min.css",
-    "build:html": "mkdir \"./src/main/resources/static/app/views\" & xcopy \"./app/app/views\" \"./src/main/resources/static/app/views\" /s",
-    "build:json": "mkdir \"./src/main/resources/static/app/validation\" & xcopy \"./app/app/validation\" \"./src/main/resources/static/app/validation\" /s",
-    "build:lang": "mkdir \"./src/main/resources/static/app/lang\" & xcopy \"./app/app/lang\" \"./src/main/resources/static/app/lang\" /s",
-    "build:fonts": "mkdir \"./src/main/resources/static/app/styles/fonts\" & xcopy \"./app/fonts\" \"./src/main/resources/static/app/styles/fonts\" /s",
-    "build:js": "concat-from-list ./build-src.json app/src.js & ng-annotate -a app/src.js | uglifyjs -o ./src/main/resources/static/app/app.min.js",
-    "serve:build": "npm run build & npm run lite:build",
-    "hash": "hashmark -c dist -r -l 6 '*.js' '{dir}/{name}-{hash}{ext}'"
-  }
+    "name": "workflow",
+    "version": "1.0.1",
+    "private": true,
+    "devDependencies": {
+        "@songkick/replaceinfiles": "^1.1.4",
+        "bower": "^1.7.9",
+        "clean-css": "3.4.10",
+        "concat-from-list": "^0.1.2",
+        "concurrently": "^2.0.0",
+        "hashmark": "^3.1.0",
+        "istanbul": "^0.4.2",
+        "jasmine-core": "~2.3.4",
+        "karma": "~0.13.15",
+        "karma-chrome-launcher": "^0.2.2",
+        "karma-jasmine": "~0.3.6",
+        "karma-jasmine-html-reporter": "^0.2.0",
+        "karma-phantomjs-launcher": "^1.0.0",
+        "karma-phantomjs2-launcher": "^0.3.2",
+        "lite-server": "^2.0.2",
+        "ng-annotate": "^1.2.1",
+        "node-sass": "^3.4.2",
+        "phantomjs-html": "^0.1.2",
+        "phantomjs-prebuilt": "^2.1.7",
+        "postbuild": "^1.0.3",
+        "rimraf": "2.5.2",
+        "uglify-js": "^2.6.2",
+        "wiredep": "^4.0.0",
+        "wiredep-cli": "^0.1.0"
+    },
+    "config": {
+        "dist": "dist/*"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "scripts": {
+        "lite": "lite-server",
+        "wiredep": "wiredep -d ./bower_components -s ./app/index.html --dependencies true",
+        "postbuild": "postbuild -i ./app/index.tpl.html  -o ./app/index.html -c ./app/app -j ./app/app",
+        "prestart": "npm run postbuild && npm run wiredep",
+        "watch:scss": "node-sass -w --include-path app/scss app/scss/main.scss   app/app/styles/main.css",
+        "start": "concurrent \"npm run watch:scss -s\" \"npm run lite\" "
+    }
 }
-

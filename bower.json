@@ -1,0 +1,35 @@
+{
+  "name": "workflowNpm",
+  "description": "my workflow with npm as a task-runner and build-tool",
+  "main": "",
+  "authors": [
+    "web-dave"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "npm",
+    "buildtool",
+    "taskrunner",
+    "workflow"
+  ],
+  "homepage": "https://github.com/web-dave/workflow-npm",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.5.5",
+    "angular-route": "1.5.5",
+    "angular-loading-bar": "0.8.0",
+    "angular-material": "1.0.7",
+    "moment": "2.13.0",
+    "AngularJS-Toaster": "2.0.0",
+    "angularjs-dropdown-multiselect": "^1.5.2"
+  },
+  "resolutions": {
+    "angular": "1.5.5"
+  }
+}
