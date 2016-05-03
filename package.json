@@ -37,10 +37,14 @@
     "scripts": {
         "lite": "lite-server",
         "wiredep": "wiredep -d ./bower_components -s ./app/index.html --dependencies true",
-        "wiresrc": "wiresrc -i ./app/index.tpl.html  -o ./app/index.html -c app/app/styles -j app/app",
-        "prestart": "npm run wiresrc && npm run wiredep",
-        "bb": "bower-build -o app -p vendor --debug",
+        "wiresrc:dev": "wiresrc -i app/index.tpl.html  -o app/index.html -r app",
+        "prestart": "npm run wiresrc:dev && npm run wiredep",
+        "bb": "bower-build -o dist -p vendor --debug",
         "watch:scss": "node-sass -w --include-path app/scss app/scss/main.scss   app/app/styles/main.css",
-        "start": "concurrent \"npm run watch:scss -s\" \"npm run lite\" "
+        "start": "concurrent \"npm run watch:scss -s\" \"npm run lite\" ",
+        "prebuild": "npm run bb", 
+        "uglify:js": "uglifyjs app/app/**.js  -o ./dist/app.min.js",
+        "build": "npm run wiresrc:build", 
+        "wiresrc:build": "wiresrc -i ./app/index.tpl.html  -o ./dist/index.html -c app/app/styles -j app/app"
     }
 }
