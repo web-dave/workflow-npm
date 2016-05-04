@@ -1,50 +1,54 @@
 {
-    "name": "workflow",
-    "version": "1.0.1",
-    "private": true,
-    "devDependencies": {
-        "bower": "^1.7.9",
-        "bower-build": "0.0.1",
-        "clean-css": "3.4.10",
-        "concat-from-list": "^0.1.2",
-        "concurrently": "^2.0.0",
-        "hashmark": "^3.1.0",
-        "istanbul": "^0.4.2",
-        "jasmine-core": "~2.3.4",
-        "karma": "~0.13.15",
-        "karma-chrome-launcher": "^0.2.2",
-        "karma-jasmine": "~0.3.6",
-        "karma-jasmine-html-reporter": "^0.2.0",
-        "karma-phantomjs-launcher": "^1.0.0",
-        "karma-phantomjs2-launcher": "^0.3.2",
-        "lite-server": "^2.0.2",
-        "ng-annotate": "^1.2.1",
-        "node-sass": "^3.4.2",
-        "phantomjs-html": "^0.1.2",
-        "phantomjs-prebuilt": "^2.1.7",
-        "rimraf": "2.5.2",
-        "uglify-js": "^2.6.2",
-        "wire-src": "^1.0.0",
-        "wiredep": "^4.0.0",
-        "wiredep-cli": "^0.1.0"
-    },
-    "config": {
-        "dist": "dist/*"
-    },
-    "engines": {
-        "node": ">=0.10.0"
-    },
-    "scripts": {
-        "lite": "lite-server",
-        "wiredep": "wiredep -d ./bower_components -s ./app/index.html --dependencies true",
-        "wiresrc:dev": "wiresrc -i app/index.tpl.html  -o app/index.html -r app",
-        "prestart": "npm run wiresrc:dev && npm run wiredep",
-        "bb": "bower-build -o dist -p vendor --debug",
-        "watch:scss": "node-sass -w --include-path app/scss app/scss/main.scss   app/app/styles/main.css",
-        "start": "concurrent \"npm run watch:scss -s\" \"npm run lite\" ",
-        "prebuild": "npm run bb", 
-        "uglify:js": "uglifyjs app/app/**.js  -o ./dist/app.min.js",
-        "build": "npm run wiresrc:build", 
-        "wiresrc:build": "wiresrc -i ./app/index.tpl.html  -o ./dist/index.html -c app/app/styles -j app/app"
-    }
+  "name": "workflow",
+  "version": "1.0.1",
+  "private": true,
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "bower-build": "0.0.1",
+    "catw": "^1.0.1",
+    "clean-css": "3.4.10",
+    "concat-from-list": "^0.1.2",
+    "concurrently": "^2.0.0",
+    "hashmark": "^3.1.0",
+    "istanbul": "^0.4.2",
+    "jasmine-core": "~2.3.4",
+    "karma": "~0.13.15",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "~0.3.6",
+    "karma-jasmine-html-reporter": "^0.2.0",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-phantomjs2-launcher": "^0.3.2",
+    "lite-server": "^2.0.2",
+    "mkdir-p": "0.0.7",
+    "ng-annotate": "^1.2.1",
+    "node-sass": "^3.4.2",
+    "phantomjs-html": "^0.1.2",
+    "phantomjs-prebuilt": "^2.1.7",
+    "rimraf": "2.5.2",
+    "uglify-js": "^2.6.2",
+    "wire-src": "^1.0.0",
+    "wiredep": "^4.0.0",
+    "wiredep-cli": "^0.1.0"
+  },
+  "config": {
+    "dist": "dist/*"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "lite": "lite-server",
+    "wiredep": "wiredep -d ./bower_components -s ./app/index.html --dependencies true",
+    "wiresrc:dev": "wiresrc -i app/index.tpl.html  -o app/index.html -r app",
+    "prestart": "npm run wiresrc:dev && npm run wiredep",
+    "bb": "bower-build -o dist -p vendor --debug",
+    "watch:scss": "node-sass -w --include-path app/scss app/scss/main.scss   app/app/styles/main.css",
+    "start": "concurrent \"npm run watch:scss -s\" \"npm run lite\" ",
+    "prebuild": "npm run clean && npm run bb && npm run uglify:scss && npm run uglify:js ",
+    "uglify:js": "catw app/**/*.js | ng-annotate -a - | uglifyjs  -o ./dist/app.min.js",
+    "uglify:scss": "node-sass --include-path app/scss app/scss/main.scss | cleancss --output ./dist/main.min.css",
+    "build": "npm run wiresrc:build",
+    "wiresrc:build": "wiresrc -i ./app/index.tpl.html  -o ./dist/index.html -r dist",
+    "clean": "rimraf dist && mkdir dist"
+  }
 }
