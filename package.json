@@ -49,6 +49,7 @@
     "uglify:scss": "node-sass --include-path app/scss app/scss/main.scss | cleancss --output ./dist/main.min.css",
     "build": "npm run wiresrc:build",
     "wiresrc:build": "wiresrc -i ./app/index.tpl.html  -o ./dist/index.html -r dist",
-    "clean": "rimraf dist && mkdir dist"
+    "clean": "rimraf dist && mkdir dist",
+    "serve:dist": "lite-server -c bs-build-config.json"
   }
 }
